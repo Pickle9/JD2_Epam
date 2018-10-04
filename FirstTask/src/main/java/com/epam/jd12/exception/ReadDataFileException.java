@@ -1,6 +1,6 @@
 package com.epam.jd12.exception;
 
-public class ReadDataFileException extends DataFileException {
+public class ReadDataFileException extends Exception {
 
     public ReadDataFileException() {
     }

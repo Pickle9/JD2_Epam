@@ -1,6 +1,6 @@
 package test.epam.jd12.reader;
 
-import com.epam.jd12.exception.DataFileNotFoundException;
+import com.epam.jd12.exception.ReadDataFileException;
 import com.epam.jd12.reader.DataFileReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,9 +11,9 @@ import java.util.List;
 public class DataFileReaderTest {
 
     @Test
-    public void readFilePositiveTest() throws Exception {
+    public void readFilePositiveTest() {
 
-        String FILE_PATH = "src/test/resources/data/test.txt";
+        String FILE_PATH = "data/test.txt";
 
         List<String> expected = new ArrayList<>();
         expected.add("1.1 2.2");
@@ -24,15 +24,13 @@ public class DataFileReaderTest {
         expected.add("1.2 3.1 5.3");
         expected.add("5.5 6.6");
 
-        List<String> actual = new DataFileReader().readFile(FILE_PATH);
+        List<String> actual = null;
+        try {
+            actual = new DataFileReader().readFile(FILE_PATH);
+        } catch (ReadDataFileException e) {
+            Assert.fail("");
+        }
 
         Assert.assertEquals(actual, expected);
-    }
-
-    @Test(expectedExceptions = DataFileNotFoundException.class)
-    public void readFileNegativeTest() throws Exception {
-
-        new DataFileReader().readFile("");
-        Assert.fail();
     }
 }

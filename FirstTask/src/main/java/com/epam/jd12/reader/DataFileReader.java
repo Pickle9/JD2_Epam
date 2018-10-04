@@ -1,7 +1,5 @@
 package com.epam.jd12.reader;
 
-import com.epam.jd12.exception.DataFileException;
-import com.epam.jd12.exception.DataFileNotFoundException;
 import com.epam.jd12.exception.ReadDataFileException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -18,27 +16,28 @@ import java.util.stream.Collectors;
 public class DataFileReader {
 
     private static final Logger log = LogManager.getLogger();
+    private static final String DEFAULT_DATA_FILE = "data/default_data.txt";
 
-    public List<String> readFile(String filePath) throws DataFileException {
+    public List<String> readFile(String filePath) throws ReadDataFileException {
 
-        if(!new File(filePath).exists()) {
-            log.log(Level.ERROR, "File not found");
-            throw new DataFileNotFoundException();
+        File file = new File(filePath);
+
+        if (!file.exists() || !file.isFile()) {
+
+            filePath = DEFAULT_DATA_FILE;
+            log.log(Level.ERROR, "Data file not found! Used default data file.");
         }
 
         Path path = Paths.get(filePath);
-
         List<String> lines;
 
         try {
             lines = Files.lines(path).collect(Collectors.toList());
         } catch (IOException e) {
-            log.log(Level.ERROR, "Read file error");
             throw new ReadDataFileException(e);
         }
 
         return lines;
 
     }
-
 }

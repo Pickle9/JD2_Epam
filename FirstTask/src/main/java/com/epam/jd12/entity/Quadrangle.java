@@ -1,21 +1,21 @@
 package com.epam.jd12.entity;
 
-import java.util.Objects;
+import java.util.Arrays;
 
 public class Quadrangle {
 
     private int id;
-    private Point A;
-    private Point B;
-    private Point C;
-    private Point D;
+    private Point a;
+    private Point b;
+    private Point c;
+    private Point d;
 
     public Quadrangle(int id, Point a, Point b, Point c, Point d) {
         this.id = id;
-        A = a;
-        B = b;
-        C = c;
-        D = d;
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
     }
 
     public int getId() {
@@ -27,35 +27,35 @@ public class Quadrangle {
     }
 
     public Point getA() {
-        return A;
+        return a;
     }
 
     public void setA(Point a) {
-        A = a;
+        this.a = a;
     }
 
     public Point getB() {
-        return B;
+        return b;
     }
 
     public void setB(Point b) {
-        B = b;
+        this.b = b;
     }
 
     public Point getC() {
-        return C;
+        return c;
     }
 
     public void setC(Point c) {
-        C = c;
+        this.c = c;
     }
 
     public Point getD() {
-        return D;
+        return d;
     }
 
     public void setD(Point d) {
-        D = d;
+        this.d = d;
     }
 
     @Override
@@ -64,25 +64,26 @@ public class Quadrangle {
         if (o == null || getClass() != o.getClass()) return false;
         Quadrangle that = (Quadrangle) o;
         return id == that.id &&
-                Objects.equals(A, that.A) &&
-                Objects.equals(B, that.B) &&
-                Objects.equals(C, that.C) &&
-                Objects.equals(D, that.D);
+                (a == that.a) || (a != null && a.equals(that.a)) &&
+                (b == that.b) || (b != null && b.equals(that.b)) &&
+                (c == that.c) || (c != null && c.equals(that.c)) &&
+                (d == that.d) || (d != null && d.equals(that.d));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, A, B, C, D);
+        Object[] arr = {id, a, b, c, d};
+        return Arrays.hashCode(arr);
     }
 
     @Override
     public String toString() {
         return "Quadrangle{" +
                 "id=" + id +
-                ", A=" + A +
-                ", B=" + B +
-                ", C=" + C +
-                ", D=" + D +
+                ", a=" + a +
+                ", b=" + b +
+                ", c=" + c +
+                ", d=" + d +
                 '}';
     }
 }

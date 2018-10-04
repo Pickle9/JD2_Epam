@@ -1,6 +1,6 @@
 package com.epam.jd12.entity;
 
-import java.util.Objects;
+import java.util.Arrays;
 
 public class Point {
 
@@ -56,12 +56,13 @@ public class Point {
         return id == point.id &&
                 Float.compare(point.x, x) == 0 &&
                 Float.compare(point.y, y) == 0 &&
-                Objects.equals(name, point.name);
+                (name == point.name) || (name != null && name.equals(point.name));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, x, y);
+        Object[] arr = {id, name, x, y};
+        return Arrays.hashCode(arr);
     }
 
     @Override

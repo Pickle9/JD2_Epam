@@ -12,68 +12,51 @@ public class QuadrangleActions {
 
     public float perimeter(Quadrangle quadrangle) {
 
-        float AB = findSideLength(quadrangle.getA(), quadrangle.getB());
-        float BC = findSideLength(quadrangle.getB(), quadrangle.getC());
-        float CD = findSideLength(quadrangle.getC(), quadrangle.getD());
-        float DA = findSideLength(quadrangle.getD(), quadrangle.getA());
+        float ab = calculateSideLength(quadrangle.getA(), quadrangle.getB());
+        float bc = calculateSideLength(quadrangle.getB(), quadrangle.getC());
+        float cd = calculateSideLength(quadrangle.getC(), quadrangle.getD());
+        float da = calculateSideLength(quadrangle.getD(), quadrangle.getA());
 
-        return AB + BC + CD + DA;
+        return ab + bc + cd + da;
     }
 
     public float area(Quadrangle quadrangle) {
 
-        float AB = findSideLength(quadrangle.getA(), quadrangle.getB());
-        float BC = findSideLength(quadrangle.getB(), quadrangle.getC());
-        float CD = findSideLength(quadrangle.getC(), quadrangle.getD());
-        float DA = findSideLength(quadrangle.getD(), quadrangle.getA());
+        float ab = calculateSideLength(quadrangle.getA(), quadrangle.getB());
+        float bc = calculateSideLength(quadrangle.getB(), quadrangle.getC());
+        float cd = calculateSideLength(quadrangle.getC(), quadrangle.getD());
+        float da = calculateSideLength(quadrangle.getD(), quadrangle.getA());
 
-        float AC = findSideLength(quadrangle.getA(), quadrangle.getC());
-        float BD = findSideLength(quadrangle.getB(), quadrangle.getD());
+        float ac = calculateSideLength(quadrangle.getA(), quadrangle.getC());
+        float bd = calculateSideLength(quadrangle.getB(), quadrangle.getD());
 
         // Полупериметр
         float p = perimeter(quadrangle) / 2;
 
         // S = Math.sqrt( (p - a)(p - b)(p - c)(p - d) - 1/4(ac + bd + ef)(ac + bd - ef) ),
         // где abcd - стороны, ef - диагонали - формула Бретшнайдера.
-        float S = (float) Math.sqrt((p - AB) * (p - BC) * (p - CD) * (p - DA) -
-                (0.25) * (AB * CD + BC * DA + AC * BD) *
-                         (AB * CD + BC * DA - AC * BD));
+        float area = (float) Math.sqrt((p - ab) * (p - bc) * (p - cd) * (p - da) -
+                (0.25) * (ab * cd + bc * da + ac * bd) *
+                        (ab * cd + bc * da - ac * bd));
 
-        return S;
+        return area;
     }
 
 
     // Выпуклый
     public boolean isConvex(Quadrangle quadrangle) {
 
-        // TODO доделать
-
-        // Четырехугольник называется выпуклым,
-        // если он расположен в одной полуплоскости относительно прямой, содержащей любую его сторону.
-        // каждая его диагональ разделяет его на два треугольника
-        // сумма его углов равна 360
-
-        /* Например
-        Найти 4 векторных произведения между сторонами, и если хоть одно будет отличаться знаком от остальных,
-        то это будет вершина невыпуклости
-
-        [x, y] = x1 * y2 - x2 * y1
-
-        Но это не точно
-         */
-
-        return true;
+        // Если диагонали пересекаются, то фигура точно выпуклая
+        return isIntersect(quadrangle.getA(), quadrangle.getC(), quadrangle.getB(), quadrangle.getD());
     }
 
     // Квадрат
     public boolean isSquare(Quadrangle quadrangle) {
 
-        // Крч так. Из 4 точек делаю 6 отрезков (2 диагоналои),
+        // Из 4 точек делаю 4 отрезка + 2 диагонали,
         // сортирую по возрастанию и сравниваю 1 и 4, 5 и 6.
 
-        // Если 1 == 4 - true и 5 == 6 true то это стопро квадрат.
-
-        List<Float> sortedSides = findAllSidesLength(quadrangle);
+        List<Float> sortedSides = calculateAllSidesLength(quadrangle);
 
         Collections.sort(sortedSides);
 
@@ -84,7 +67,7 @@ public class QuadrangleActions {
     // Ромб
     public boolean isRhombus(Quadrangle quadrangle) {
 
-        List<Float> sortedSides = findAllSidesLength(quadrangle);
+        List<Float> sortedSides = calculateAllSidesLength(quadrangle);
 
         Collections.sort(sortedSides);
 
@@ -96,18 +79,18 @@ public class QuadrangleActions {
     // Трапеция
     public boolean isTrapeze(Quadrangle quadrangle) {
 
-        Point A = quadrangle.getA();
-        Point B = quadrangle.getB();
-        Point C = quadrangle.getC();
-        Point D = quadrangle.getD();
+        Point a = quadrangle.getA();
+        Point b = quadrangle.getB();
+        Point c = quadrangle.getC();
+        Point d = quadrangle.getD();
 
         // В трапеции две стороны параллельны, а две другие - нет.
-        return !isParallel(A, B, C, D) & isParallel(B, C, A, D);
+        return !isParallel(a, b, c, d) & isParallel(b, c, a, d);
     }
 
     //-------------------------------------------------------
 
-    private float findSideLength(Point p1, Point p2) {
+    private float calculateSideLength(Point p1, Point p2) {
 
         float x1 = p1.getX();
         float y1 = p1.getY();
@@ -115,30 +98,30 @@ public class QuadrangleActions {
         float x2 = p2.getX();
         float y2 = p2.getY();
 
-        return (float) Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
+        return (float) Math.hypot(x2 - x1, y2 - y1);
     }
 
-    private List<Float> findAllSidesLength(Quadrangle quadrangle) {
+    private List<Float> calculateAllSidesLength(Quadrangle quadrangle) {
 
-        Point A = quadrangle.getA();
-        Point B = quadrangle.getB();
-        Point C = quadrangle.getC();
-        Point D = quadrangle.getD();
+        Point a = quadrangle.getA();
+        Point b = quadrangle.getB();
+        Point c = quadrangle.getC();
+        Point d = quadrangle.getD();
 
-        float AB = findSideLength(A, B);
-        float BC = findSideLength(B, C);
-        float CD = findSideLength(C, D);
-        float DA = findSideLength(D, A);
-        float AC = findSideLength(A, C);
-        float BD = findSideLength(B, D);
+        float ab = calculateSideLength(a, b);
+        float bc = calculateSideLength(b, c);
+        float cd = calculateSideLength(c, d);
+        float da = calculateSideLength(d, a);
+        float ac = calculateSideLength(a, c);
+        float bd = calculateSideLength(b, d);
 
         List<Float> sides = new ArrayList<>();
-        sides.add(AB);
-        sides.add(BC);
-        sides.add(CD);
-        sides.add(DA);
-        sides.add(AC);
-        sides.add(BD);
+        sides.add(ab);
+        sides.add(bc);
+        sides.add(cd);
+        sides.add(da);
+        sides.add(ac);
+        sides.add(bd);
 
         return sides;
     }
@@ -149,5 +132,15 @@ public class QuadrangleActions {
         // то отрезки параллельны.
         return (a2.getX() - a1.getX()) / (a2.getY() - a1.getY()) ==
                 (b2.getX() - b1.getX()) / (b2.getY() - b1.getY());
+    }
+
+    private boolean isIntersect(Point a1, Point a2, Point b1, Point b2) {
+
+        double d1 = (b2.getX() - b1.getX()) * (a1.getY() - b1.getY()) - (b2.getY() - b1.getY()) * (a1.getX() - b1.getX());
+        double d2 = (b2.getX() - b1.getX()) * (a2.getY() - b1.getY()) - (b2.getY() - b1.getY()) * (a2.getX() - b1.getX());
+        double d3 = (a2.getX() - a1.getX()) * (b1.getY() - a1.getY()) - (a2.getY() - a1.getY()) * (b1.getX() - a1.getX());
+        double d4 = (a2.getX() - a1.getX()) * (b2.getY() - a1.getY()) - (a2.getY() - a1.getY()) * (b2.getX() - a1.getX());
+
+        return (d1 * d2 < 0) & (d3 * d4 < 0);
     }
 }
