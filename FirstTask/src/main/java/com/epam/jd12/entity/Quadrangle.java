@@ -1,8 +1,12 @@
 package com.epam.jd12.entity;
 
+import com.epam.jd12.observer.ObjectsObserver;
+
 import java.util.Arrays;
 
 public class Quadrangle {
+
+    private static ObjectsObserver observer = ObjectsObserver.getInstance();
 
     private int id;
     private Point a;
@@ -32,6 +36,7 @@ public class Quadrangle {
 
     public void setA(Point a) {
         this.a = a;
+        observer.update(this);
     }
 
     public Point getB() {
@@ -40,6 +45,7 @@ public class Quadrangle {
 
     public void setB(Point b) {
         this.b = b;
+        observer.update(this);
     }
 
     public Point getC() {
@@ -48,6 +54,7 @@ public class Quadrangle {
 
     public void setC(Point c) {
         this.c = c;
+        observer.update(this);
     }
 
     public Point getD() {
@@ -56,6 +63,7 @@ public class Quadrangle {
 
     public void setD(Point d) {
         this.d = d;
+        observer.update(this);
     }
 
     @Override
@@ -64,15 +72,15 @@ public class Quadrangle {
         if (o == null || getClass() != o.getClass()) return false;
         Quadrangle that = (Quadrangle) o;
         return id == that.id &&
-                (a == that.a) || (a != null && a.equals(that.a)) &&
-                (b == that.b) || (b != null && b.equals(that.b)) &&
-                (c == that.c) || (c != null && c.equals(that.c)) &&
-                (d == that.d) || (d != null && d.equals(that.d));
+                ((a == that.a) || (a != null && a.equals(that.a))) &&
+                ((b == that.b) || (b != null && b.equals(that.b))) &&
+                ((c == that.c) || (c != null && c.equals(that.c))) &&
+                ((d == that.d) || (d != null && d.equals(that.d)));
     }
 
     @Override
     public int hashCode() {
-        Object[] arr = {id, a, b, c, d};
+        Object[] arr = {observer, id, a, b, c, d};
         return Arrays.hashCode(arr);
     }
 

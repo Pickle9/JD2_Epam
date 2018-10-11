@@ -18,16 +18,16 @@ public class DataParserTest {
     @BeforeClass
     public void setUp() {
         quadrangle1 = new Quadrangle(0,
-                new Point(0, "Point_0_0", 1, 1),
-                new Point(1, "Point_0_1", 2, 2),
-                new Point(2, "Point_0_2", 3, 3),
-                new Point(3, "Point_0_3", 4, 4));
+                new Point(0, 0, "Point_0_0", 1, 1),
+                new Point(0, 1, "Point_0_1", 2, 2),
+                new Point(0, 2, "Point_0_2", 3, 3),
+                new Point(0, 3, "Point_0_3", 4, 4));
 
         quadrangle2 = new Quadrangle(1,
-                new Point(0, "Point_1_0", 5, 5),
-                new Point(1, "Point_1_1", 6, 6),
-                new Point(2, "Point_1_2", 7, 7),
-                new Point(3, "Point_1_3", 8, 8));
+                new Point(1, 4, "Point_1_4", 5, 5),
+                new Point(1, 5, "Point_1_5", 6, 6),
+                new Point(1, 6, "Point_1_6", 7, 7),
+                new Point(1, 7, "Point_1_7", 8, 8));
     }
 
     @Test

@@ -18,10 +18,10 @@ public class QuadrangleActionsTest {
 
     @BeforeClass
     public void setUp() {
-        a = new Point(0, "A", 1, 1);
-        b = new Point(1, "B", 1, 3);
-        c = new Point(2, "C", 3, 3);
-        d = new Point(3, "D", 3, 1);
+        a = new Point(0, 0, "A", 1, 1);
+        b = new Point(0, 1, "B", 1, 3);
+        c = new Point(0, 2, "C", 3, 3);
+        d = new Point(0, 3, "D", 3, 1);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class QuadrangleActionsTest {
 
     @Test
     public void isConvexFalseTest() {
-        Point b = new Point(1, "B", 2, 2);
+        Point b = new Point(0, 1, "B", 2, 2);
 
         Quadrangle quadrangle = new Quadrangle(0, a, b, c, d);
         Assert.assertFalse(quadrangleActions.isConvex(quadrangle));
@@ -70,7 +70,7 @@ public class QuadrangleActionsTest {
     @Test
     public void isSquareFalseTest() {
 
-        Point d = new Point(3, "D", 3, 2);
+        Point d = new Point(0, 3, "D", 3, 2);
 
         Quadrangle quadrangle = new Quadrangle(0, a, b, c, d);
         Assert.assertFalse(quadrangleActions.isSquare(quadrangle));
@@ -79,10 +79,10 @@ public class QuadrangleActionsTest {
     @Test
     public void isRhombusTrueTest() {
 
-        Point a = new Point(0, "A", 1, 3);
-        Point b = new Point(1, "B", 2, 5);
-        Point c = new Point(2, "C", 3, 3);
-        Point d = new Point(3, "D", 2, 1);
+        Point a = new Point(0, 0, "A", 1, 3);
+        Point b = new Point(0, 1, "B", 2, 5);
+        Point c = new Point(0, 2, "C", 3, 3);
+        Point d = new Point(0, 3, "D", 2, 1);
 
         Quadrangle quadrangle = new Quadrangle(0, a, b, c, d);
         Assert.assertTrue(quadrangleActions.isRhombus(quadrangle));
@@ -98,10 +98,10 @@ public class QuadrangleActionsTest {
     @Test
     public void isTrapezeTrueTest() {
 
-        Point a = new Point(0, "A", 1, 1);
-        Point b = new Point(1, "B", 2, 3);
-        Point c = new Point(2, "C", 4, 3);
-        Point d = new Point(3, "D", 5, 1);
+        Point a = new Point(0, 0, "A", 1, 1);
+        Point b = new Point(0, 1, "B", 2, 3);
+        Point c = new Point(0, 2, "C", 4, 3);
+        Point d = new Point(0, 3, "D", 5, 1);
 
         Quadrangle quadrangle = new Quadrangle(0, a, b, c, d);
         Assert.assertTrue(quadrangleActions.isTrapeze(quadrangle));

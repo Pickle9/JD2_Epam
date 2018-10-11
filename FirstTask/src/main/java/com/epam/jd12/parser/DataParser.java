@@ -34,25 +34,26 @@ public class DataParser {
 
     private Quadrangle createQuadrangle(List<String> stringPoints) {
 
-        Point a = parseLine(stringPoints.get(0));
-        Point b = parseLine(stringPoints.get(1));
-        Point c = parseLine(stringPoints.get(2));
-        Point d = parseLine(stringPoints.get(3));
+        int idQuadrangle = getIdQuadrangle();
 
-        int idQuadrangle = getAndIncrementIdQuadrangle();
+        Point a = parseLine(idQuadrangle, stringPoints.get(0));
+        Point b = parseLine(idQuadrangle, stringPoints.get(1));
+        Point c = parseLine(idQuadrangle, stringPoints.get(2));
+        Point d = parseLine(idQuadrangle, stringPoints.get(3));
 
-        resetPointId();
+        incrementQuadrangleId();
+
         return new Quadrangle(idQuadrangle, a, b, c, d);
     }
 
-    private Point parseLine(String line) {
+    private Point parseLine(int figureId, String line) {
 
         String[] points = line.trim().split("\\s");
         float x = Float.valueOf(points[0]);
         float y = Float.valueOf(points[1]);
 
         String pointName = getPointName(); // Вызываю тут, чтобы id не успел увеличиться.
-        return new Point(getAndIncrementIdPoint(), pointName, x, y);
+        return new Point(figureId, getAndIncrementIdPoint(), pointName, x, y);
     }
 
 }

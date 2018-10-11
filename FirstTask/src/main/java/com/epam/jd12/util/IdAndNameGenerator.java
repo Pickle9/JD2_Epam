@@ -31,10 +31,6 @@ public class IdAndNameGenerator {
         return idPoint++;
     }
 
-    public static void resetPointId() {
-        idPoint = 0;
-    }
-
     public static String getPointName() {
         return String.format("Point_%d_%d", idQuadrangle, idPoint);
     }
