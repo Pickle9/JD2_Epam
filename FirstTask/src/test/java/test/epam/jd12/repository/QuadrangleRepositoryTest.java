@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("all")
 public class QuadrangleRepositoryTest {
 
     Point a;
@@ -75,8 +76,6 @@ public class QuadrangleRepositoryTest {
 
         repository.add(quadrangle);
         repository.update(q2);
-
-        Map<Integer, Quadrangle> expected = Map.of(0, q2);
 
         Map<Integer, Quadrangle> actual;
         try {
