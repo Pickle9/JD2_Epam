@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class QuadrangleRepository implements Repository<Quadrangle> {
 
-    private static final Logger log = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private static QuadrangleRepository instance;
     private final Map<Integer, Quadrangle> quadrangles = new HashMap<>();
@@ -32,7 +32,7 @@ public class QuadrangleRepository implements Repository<Quadrangle> {
     public void add(Quadrangle item) {
 
         if (item == null) {
-            log.log(Level.WARN, "Incorrect Quadrangle. The object wasn't saved");
+            LOGGER.log(Level.ERROR, "Incorrect Quadrangle. The object wasn't saved");
             return;
         }
 
@@ -43,7 +43,7 @@ public class QuadrangleRepository implements Repository<Quadrangle> {
     public void remove(Quadrangle item) {
 
         if (item == null) {
-            log.log(Level.WARN, "Incorrect Quadrangle. The object wasn't removed");
+            LOGGER.log(Level.ERROR, "Incorrect Quadrangle. The object wasn't removed");
             return;
         }
 
@@ -54,7 +54,7 @@ public class QuadrangleRepository implements Repository<Quadrangle> {
     public void update(Quadrangle item) {
 
         if (item == null) {
-            log.log(Level.WARN, "Incorrect Quadrangle. The object wasn't updated");
+            LOGGER.log(Level.ERROR, "Incorrect Quadrangle. The object wasn't updated");
             return;
         }
 
@@ -70,7 +70,7 @@ public class QuadrangleRepository implements Repository<Quadrangle> {
     public List<Quadrangle> query(Specification<Quadrangle> specification) {
 
         if (quadrangles.isEmpty()) {
-            log.log(Level.WARN, "Empty quadrangles list from the repository. The query method wasn't finished successfully");
+            LOGGER.log(Level.ERROR, "Empty quadrangles list from the repository. The query method wasn't finished successfully");
             return null;
         }
 

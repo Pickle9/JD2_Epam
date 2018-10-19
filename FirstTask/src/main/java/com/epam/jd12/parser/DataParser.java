@@ -2,13 +2,16 @@ package com.epam.jd12.parser;
 
 import com.epam.jd12.entity.Point;
 import com.epam.jd12.entity.Quadrangle;
+import com.epam.jd12.util.NameGenerator;
 
-import static com.epam.jd12.util.IdAndNameGenerator.*;
+import static com.epam.jd12.util.IdGenerator.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataParser {
+
+    private static final String SPLIT_COORDINATES_REG_EXP = "\\s";
 
     public List<Quadrangle> createQuadrangles(List<String> stringPoints) {
 
@@ -48,11 +51,11 @@ public class DataParser {
 
     private Point parseLine(int figureId, String line) {
 
-        String[] points = line.trim().split("\\s");
-        float x = Float.valueOf(points[0]);
-        float y = Float.valueOf(points[1]);
+        String[] coordinates = line.trim().split(SPLIT_COORDINATES_REG_EXP);
+        float x = Float.valueOf(coordinates[0]);
+        float y = Float.valueOf(coordinates[1]);
 
-        String pointName = getPointName(); // Вызываю тут, чтобы id не успел увеличиться.
+        String pointName = NameGenerator.getPointName(); // Вызываю тут, чтобы id не успел увеличиться.
         return new Point(figureId, getAndIncrementIdPoint(), pointName, x, y);
     }
 

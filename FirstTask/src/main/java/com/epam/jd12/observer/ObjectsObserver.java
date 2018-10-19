@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 public class ObjectsObserver {
 
-    private static final Logger log = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private static ObjectsObserver instance;
 
@@ -30,7 +30,7 @@ public class ObjectsObserver {
     public void update(Point point) {
 
         if (point == null) {
-            log.log(Level.ERROR, "The Point is null. The figure parameters weren't updated");
+            LOGGER.log(Level.ERROR, "The Point is null. The figure parameters weren't updated");
             return;
         }
 
@@ -43,12 +43,16 @@ public class ObjectsObserver {
             currentQuadrangle = q;
         }
 
+        if (currentQuadrangle == null) {
+            LOGGER.log(Level.ERROR, "There is no figures in repository with this id. The figure parameters weren't updated");
+            return;
+        }
+
         QuadrangleActions actions = new QuadrangleActions();
 
         float perimeter = actions.perimeter(currentQuadrangle);
         float area = actions.area(currentQuadrangle);
 
-        assert currentQuadrangle != null; // think about
         Warehouse.QUADRANGLES_PERIMETERS.put(currentQuadrangle.getId(), perimeter);
         Warehouse.QUADRANGLES_AREAS.put(currentQuadrangle.getId(), area);
     }
@@ -56,7 +60,7 @@ public class ObjectsObserver {
     public void update(Quadrangle quadrangle) {
 
         if (quadrangle == null) {
-            log.log(Level.ERROR, "The Quadrangle is null. The figure parameters weren't updated");
+            LOGGER.log(Level.ERROR, "The Quadrangle is null. The figure parameters weren't updated");
             return;
         }
 

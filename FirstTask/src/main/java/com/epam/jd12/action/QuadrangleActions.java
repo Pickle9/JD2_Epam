@@ -3,7 +3,7 @@ package com.epam.jd12.action;
 import com.epam.jd12.entity.Point;
 import com.epam.jd12.entity.Quadrangle;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -115,15 +115,7 @@ public class QuadrangleActions {
         float ac = calculateSideLength(a, c);
         float bd = calculateSideLength(b, d);
 
-        List<Float> sides = new ArrayList<>();
-        sides.add(ab);
-        sides.add(bc);
-        sides.add(cd);
-        sides.add(da);
-        sides.add(ac);
-        sides.add(bd);
-
-        return sides;
+        return Arrays.asList(ab, bc, cd, da, ac, bd);
     }
 
     private boolean isParallel(Point a1, Point a2, Point b1, Point b2) {

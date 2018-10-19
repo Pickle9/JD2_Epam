@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class Warehouse {
 
+    private Warehouse(){}
+
     public static final Map<Integer, Float> QUADRANGLES_PERIMETERS = new HashMap<>();
     public static final Map<Integer, Float> QUADRANGLES_AREAS = new HashMap<>();
 }

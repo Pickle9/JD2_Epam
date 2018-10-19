@@ -22,6 +22,10 @@ public class Quadrangle {
         this.d = d;
     }
 
+    private void notifyObservers() {
+        observer.update(this);
+    }
+
     public int getId() {
         return id;
     }
@@ -36,7 +40,7 @@ public class Quadrangle {
 
     public void setA(Point a) {
         this.a = a;
-        observer.update(this);
+        notifyObservers();
     }
 
     public Point getB() {
@@ -45,7 +49,7 @@ public class Quadrangle {
 
     public void setB(Point b) {
         this.b = b;
-        observer.update(this);
+        notifyObservers();
     }
 
     public Point getC() {
@@ -54,7 +58,7 @@ public class Quadrangle {
 
     public void setC(Point c) {
         this.c = c;
-        observer.update(this);
+        notifyObservers();
     }
 
     public Point getD() {
@@ -63,7 +67,7 @@ public class Quadrangle {
 
     public void setD(Point d) {
         this.d = d;
-        observer.update(this);
+        notifyObservers();
     }
 
     @Override

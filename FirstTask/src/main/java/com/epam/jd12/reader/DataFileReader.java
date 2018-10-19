@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class DataFileReader {
 
-    private static final Logger log = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
     private static final String DEFAULT_DATA_FILE = "data/default_data.txt";
 
     public List<String> readFile(String filePath) throws ReadDataFileException {
@@ -25,7 +25,7 @@ public class DataFileReader {
         if (!file.exists() || !file.isFile()) {
 
             filePath = DEFAULT_DATA_FILE;
-            log.log(Level.ERROR, "Data file not found! Used default data file.");
+            LOGGER.log(Level.ERROR, "Data file not found! Used default data file path.");
         }
 
         Path path = Paths.get(filePath);
@@ -38,6 +38,5 @@ public class DataFileReader {
         }
 
         return lines;
-
     }
 }
