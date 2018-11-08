@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ferry_boats>
+    <ferry_boat>
+        <platform_carrying>
+            7000
+        </platform_carrying>
+        <platform_square>
+            25
+        </platform_square>
+    </ferry_boat>
+</ferry_boats>

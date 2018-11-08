@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<cars>
+    <car>
+        <type>
+            PASSENGER_CAR
+        </type>
+        <weight>
+            1300
+        </weight>
+        <square>
+            8
+        </square>
+    </car>
+
+    <car>
+        <type>
+            PASSENGER_CAR
+        </type>
+        <weight>
+            1720
+        </weight>
+        <square>
+            8
+        </square>
+    </car>
+
+    <car>
+        <type>
+            PASSENGER_CAR
+        </type>
+        <weight>
+            2330
+        </weight>
+        <square>
+            10
+        </square>
+    </car>
+
+    <car>
+        <type>
+            TRUCK
+        </type>
+        <weight>
+            2900
+        </weight>
+        <square>
+            11
+        </square>
+    </car>
+    <car>
+        <type>
+            TRUCK
+        </type>
+        <weight>
+            3500
+        </weight>
+        <square>
+            13
+        </square>
+    </car>
+</cars>
