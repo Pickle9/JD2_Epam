@@ -2,6 +2,7 @@ package by.epam.htp12.composite;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class TextComposite implements Component {
 
@@ -72,5 +73,27 @@ public class TextComposite implements Component {
 
     public Component get(int id) {
         return components.get(id);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TextComposite that = (TextComposite) o;
+        return type == that.type &&
+                Objects.equals(components, that.components);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, components);
+    }
+
+    @Override
+    public String toString() {
+        return "TextComposite{" +
+                "type=" + type +
+                ", components=" + components +
+                '}';
     }
 }

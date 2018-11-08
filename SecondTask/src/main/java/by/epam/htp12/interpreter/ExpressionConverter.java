@@ -1,7 +1,5 @@
 package by.epam.htp12.interpreter;
 
-import by.epam.htp12.interpreter.MathOperation;
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Map;
