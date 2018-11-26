@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<banks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="urn:Namespace"
+       xsi:schemaLocation="urn:Namespace banks.xsd">
+
+    <!-- №1 -->
+    <bank country="Belarus">
+        <name>BSBank</name>
+        <type>Срочный</type>
+        <depositor>Жданов Андрей</depositor>
+        <account-id>b1</account-id>
+        <amount-on-deposit>620.0</amount-on-deposit>
+        <profitability>6.5</profitability>
+        <time-constraints>2019-01-01</time-constraints>
+    </bank>
+
+    <!-- №2 -->
+    <bank>
+        <name>BSBank</name>
+        <type>До востребования</type>
+        <depositor>Раскольников Толя</depositor>
+        <account-id>b2</account-id>
+        <amount-on-deposit>1.01</amount-on-deposit>
+        <profitability>9</profitability>
+        <time-constraints>2019-03-10</time-constraints>
+    </bank>
+
+    <!-- №3 -->
+    <bank>
+        <name>PriorBank</name>
+        <type>Срочный</type>
+        <depositor>Ахматова Анна</depositor>
+        <account-id>b3</account-id>
+        <amount-on-deposit>999.1</amount-on-deposit>
+        <profitability>12</profitability>
+        <time-constraints>2018-12-20</time-constraints>
+    </bank>
+
+    <!-- №4 -->
+    <bank country="Belarus">
+        <name>Alfa-Bank</name>
+        <type>Расчётный</type>
+        <depositor>Жданов Андрей</depositor>
+        <account-id>b4</account-id>
+        <amount-on-deposit>405.5</amount-on-deposit>
+        <profitability>15</profitability>
+        <time-constraints>2020-02-03</time-constraints>
+    </bank>
+
+    <!-- №5 -->
+    <bank>
+        <name>Alfa-Bank</name>
+        <type>Срочный</type>
+        <depositor>Пупкин Василий</depositor>
+        <account-id>b5</account-id>
+        <amount-on-deposit>425.2</amount-on-deposit>
+        <profitability>10.5</profitability>
+        <time-constraints>2019-05-01</time-constraints>
+    </bank>
+
+    <!-- №6 -->
+    <bank  country="Russia">
+        <name>Alfa-Bank</name>
+        <type>Накопительный</type>
+        <depositor>Терёшин Кирилл</depositor>
+        <account-id>b6</account-id>
+        <amount-on-deposit>65.3</amount-on-deposit>
+        <profitability>25</profitability>
+        <time-constraints>2021-10-01</time-constraints>
+    </bank>
+
+    <!-- №7 -->
+    <bank>
+        <name>Belinvestbank</name>
+        <type>Сберегательный</type>
+        <depositor>Путин Владимир</depositor>
+        <account-id>b7</account-id>
+        <amount-on-deposit>12000</amount-on-deposit>
+        <profitability>10</profitability>
+        <time-constraints>2019-12-29</time-constraints>
+    </bank>
+
+    <!-- №8 -->
+    <bank>
+        <name>Belinvestbank</name>
+        <type>Сберегательный</type>
+        <depositor>Бородач Родион</depositor>
+        <account-id>b8</account-id>
+        <amount-on-deposit>1100.3</amount-on-deposit>
+        <profitability>9.5</profitability>
+        <time-constraints>2019-05-05</time-constraints>
+    </bank>
+
+    <!-- №9 -->
+    <bank>
+        <name>Paritetbank</name>
+        <type>Накопительный</type>
+        <depositor>Чапаев и Петька</depositor>
+        <account-id>b9</account-id>
+        <amount-on-deposit>630.6</amount-on-deposit>
+        <profitability>20</profitability>
+        <time-constraints>2019-10-20</time-constraints>
+    </bank>
+
+    <!-- №10 -->
+    <bank country="Belarus">
+        <name>BTABank</name>
+        <type>Мателлический</type>
+        <depositor>Дед Мороз</depositor>
+        <account-id>b10</account-id>
+        <amount-on-deposit>3505.8</amount-on-deposit>
+        <profitability>15.5</profitability>
+        <time-constraints>2018-12-31</time-constraints>
+    </bank>
+
+    <!-- №11 -->
+    <bank  country="Belarus">
+        <name>Idea-Bank</name>
+        <type>Мателлический</type>
+        <depositor>Снегурочка</depositor>
+        <account-id>b11</account-id>
+        <amount-on-deposit>1400.0</amount-on-deposit>
+        <profitability>12</profitability>
+        <time-constraints>2018-12-31</time-constraints>
+    </bank>
+
+    <!-- №12 -->
+    <bank  country="Ukraine">
+        <name>Fransabank</name>
+        <type>Срочный</type>
+        <depositor>Иванова Инна</depositor>
+        <account-id>b12</account-id>
+        <amount-on-deposit>403.3</amount-on-deposit>
+        <profitability>9</profitability>
+        <time-constraints>2019-01-01</time-constraints>
+    </bank>
+
+    <!-- №13 -->
+    <bank  country="Russia">
+        <name>RRB-Bank</name>
+        <type>До востребования</type>
+        <depositor>Трамп Дональд</depositor>
+        <account-id>b13</account-id>
+        <amount-on-deposit>185000.0</amount-on-deposit>
+        <profitability>8.5</profitability>
+        <time-constraints>2021-01-01</time-constraints>
+    </bank>
+
+    <!-- №14 -->
+    <bank>
+        <name>StatusBank</name>
+        <type>До востребования</type>
+        <depositor>Миккельсен Мадс</depositor>
+        <account-id>b14</account-id>
+        <amount-on-deposit>25200.0</amount-on-deposit>
+        <profitability>9</profitability>
+        <time-constraints>2025-11-01</time-constraints>
+    </bank>
+
+    <!-- №15 -->
+    <bank>
+        <name>BelVEB</name>
+        <type>Расчётный</type>
+        <depositor>Рыжий Джонни</depositor>
+        <account-id>b15</account-id>
+        <amount-on-deposit>500.0</amount-on-deposit>
+        <profitability>11.5</profitability>
+        <time-constraints>2019-03-30</time-constraints>
+    </bank>
+
+    <!-- №16 -->
+    <bank country="Belarus">
+        <name>Belgazprombank</name>
+        <type>Мателлический</type>
+        <depositor>Долгопупс Невил</depositor>
+        <account-id>b16</account-id>
+        <amount-on-deposit>333.3</amount-on-deposit>
+        <profitability>17.5</profitability>
+        <time-constraints>2030-03-03</time-constraints>
+    </bank>
+
+</banks>

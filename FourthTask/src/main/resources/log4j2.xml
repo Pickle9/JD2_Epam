@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="warn">
+
+    <Properties>
+        <Property name="log_path">log/</Property>
+    </Properties>
+
+    <Appenders>
+
+        <RollingFile name="RollingFile" fileName="${log_path}LogInfo.log"
+                     filePattern="%{log_path}LogInfo-%d{dd-MM-yy}.log" ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</Pattern>
+            </PatternLayout>
+
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
+        </Console>
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug" additivity="false">
+            <appender-ref ref="RollingFile" level="warn"/>
+            <appender-ref ref="Console" level="debug"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
+

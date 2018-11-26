@@ -1,0 +1,2 @@
+[ERROR] 2018-11-23 04:04:52.115 [main] XmlValidator - org.xml.sax.SAXParseException; systemId: file:///G:/Java/FourthTask/; lineNumber: 1; columnNumber: 1; Content is not allowed in prolog.
+[ERROR] 2018-11-23 04:05:52.662 [main] XmlValidator - org.xml.sax.SAXParseException; systemId: file:///G:/Java/FourthTask/data/banks.xsd; lineNumber: 27; columnNumber: 57; src-attribute.4: Attribute 'country' has both a 'type' attribute and an anonymous 'simpleType' child. Only one of these is allowed for an attribute.
