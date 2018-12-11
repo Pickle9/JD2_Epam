@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<banks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="urn:Namespace"
+       xsi:schemaLocation="urn:Namespace test.xsd">
+
+    <!-- №1 -->
+    <bank country="Belarus">
+        <name>BSBank</name>
+        <type>Срочный</type>
+        <depositor>Жданов Андрей</depositor>
+        <account-id>b1</account-id>
+        <amount-on-deposit>620.0</amount-on-deposit>
+        <profitability>6.5</profitability>
+        <time-constraints>2019-01-01</time-constraints>
+    </bank>
+
+    <!-- №2 -->
+    <bank>
+        <name>BSBank</name>
+        <type>До востребования</type>
+        <depositor>Раскольников Толя</depositor>
+        <account-id>b2</account-id>
+        <amount-on-deposit>1.01</amount-on-deposit>
+        <profitability>9</profitability>
+        <time-constraints>2019-03-10</time-constraints>
+    </bank>
+</banks>

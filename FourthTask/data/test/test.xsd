@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="urn:Namespace"
+            xmlns="urn:Namespace"
+            elementFormDefault="qualified">
+
+    <xsd:element name="banks">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="bank" type="Bank" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="Bank">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="type" type="Type"/>
+            <xsd:element name="depositor" type="xsd:string"/>
+            <xsd:element name="account-id" type="xsd:ID"/>
+            <xsd:element name="amount-on-deposit" type="Amount-on-deposit"/>
+            <xsd:element name="profitability" type="Profitability"/>
+            <xsd:element name="time-constraints" type="xsd:date"/>
+        </xsd:sequence>
+
+        <xsd:attribute name="country" type="xsd:string"/>
+
+    </xsd:complexType>
+
+    <xsd:simpleType name="Amount-on-deposit">
+        <xsd:restriction base="xsd:double">
+            <xsd:pattern value="(0*[\d][\d]*(\.[\d]+)?|0+\.[\d]*[1-9][\d]*)"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="Profitability">
+        <xsd:restriction base="xsd:float">
+            <xsd:pattern value="(0*[\d][\d]*(\.[\d]+)?|0+\.[\d]*[1-9][\d]*)"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="Type">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="До востребования"/>
+            <xsd:enumeration value="Срочный"/>
+            <xsd:enumeration value="Расчётный"/>
+            <xsd:enumeration value="Накопительный"/>
+            <xsd:enumeration value="Сберегательный"/>
+            <xsd:enumeration value="Мателлический"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>
