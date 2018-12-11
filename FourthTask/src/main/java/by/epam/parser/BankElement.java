@@ -1,4 +1,4 @@
-package by.epam.parser;
+package by.epam.fourthtask.parser;
 
 public enum BankElement {
     BANK, BANKS,

@@ -1,4 +1,4 @@
-package by.epam.entity;
+package by.epam.fourthtask.entity;
 
 public enum DepositType {
 

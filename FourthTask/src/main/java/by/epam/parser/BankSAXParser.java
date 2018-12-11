@@ -1,15 +1,13 @@
-package by.epam.parser;
+package by.epam.fourthtask.parser;
 
-import by.epam.entity.Bank;
-import by.epam.entity.DepositType;
+import by.epam.fourthtask.entity.Bank;
+import by.epam.fourthtask.entity.DepositType;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
-import static by.epam.parser.ParserStringEnum.*;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -31,8 +29,6 @@ public class BankSAXParser {
         File file = new File(filePath);
         if (!file.exists() || !file.isFile()) {
             LOGGER.log(Level.ERROR, "Wrong data file path.");
-            // кидаю runtime, т.к. xml уже скачан и проверен нан валидность,
-            // поэтому ошибки могут быть связаны только с работой парсера
             throw new RuntimeException();
         }
 
@@ -56,12 +52,12 @@ public class BankSAXParser {
                 if (qName.equalsIgnoreCase(BankElement.BANK.name())) {
                     bank = new Bank();
 
-                    String attribute = attributes.getValue(COUNTRY_STRING.getValue());
-                    bank.setCountry(Objects.requireNonNullElse(attribute, EMPTY_STRING.getValue()));
+                    String attribute = attributes.getValue(StringEnum.COUNTRY_STRING.getValue());
+                    bank.setCountry(Objects.requireNonNullElse(attribute, StringEnum.EMPTY_STRING.getValue()));
                 }
                 if (!qName.equalsIgnoreCase(BankElement.BANKS.name())) {
-                    currentElement = BankElement.valueOf(qName.toUpperCase().replaceAll(HYPHEN_SYMBOL.getValue(),
-                            UNDERSCORE_SYMBOL.getValue()));
+                    currentElement = BankElement.valueOf(qName.toUpperCase().replaceAll(StringEnum.HYPHEN_SYMBOL.getValue(),
+                            StringEnum.UNDERSCORE_SYMBOL.getValue()));
                 }
             }
 
@@ -115,7 +111,7 @@ public class BankSAXParser {
                         break;
                     }
                     case TIME_CONSTRAINTS: {
-                        SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT.getValue());
+                        SimpleDateFormat format = new SimpleDateFormat(StringEnum.DATE_FORMAT.getValue());
                         try {
                             bank.setTimeConstraints(format.parse(str));
                         } catch (ParseException e) {

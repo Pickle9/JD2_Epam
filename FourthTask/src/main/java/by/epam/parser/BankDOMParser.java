@@ -1,7 +1,7 @@
-package by.epam.parser;
+package by.epam.fourthtask.parser;
 
-import by.epam.entity.Bank;
-import by.epam.entity.DepositType;
+import by.epam.fourthtask.entity.Bank;
+import by.epam.fourthtask.entity.DepositType;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,8 +10,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
-import static by.epam.parser.ParserStringEnum.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -44,8 +42,6 @@ public class BankDOMParser {
         File file = new File(filePath);
         if (!file.exists() || !file.isFile()) {
             LOGGER.log(Level.ERROR, "Wrong data file path.");
-            // кидаю runtime, т.к. xml уже скачан и проверен нан валидность,
-            // поэтому ошибки могут быть связаны только с работой парсера
             throw new RuntimeException();
         }
 
@@ -63,7 +59,7 @@ public class BankDOMParser {
 
         document.getDocumentElement().normalize();
 
-        NodeList elements = document.getElementsByTagName(BANK_STRING.getValue());
+        NodeList elements = document.getElementsByTagName(StringEnum.BANK_STRING.getValue());
 
         for (int temp = 0; temp < elements.getLength(); temp++) {
 
@@ -80,8 +76,8 @@ public class BankDOMParser {
     private static Bank getBank(Element element) {
         Bank bank = new Bank();
 
-        String country = element.getAttribute(COUNTRY_STRING.getValue());
-        bank.setCountry(Objects.requireNonNullElse(country, EMPTY_STRING.getValue()));
+        String country = element.getAttribute(StringEnum.COUNTRY_STRING.getValue());
+        bank.setCountry(Objects.requireNonNullElse(country, StringEnum.EMPTY_STRING.getValue()));
 
         String strType = (getTagValue(TYPE_STRING, element));
         for (DepositType type : DepositType.values()) {
@@ -92,7 +88,7 @@ public class BankDOMParser {
         }
 
         String strDate = getTagValue(TIME_CONSTRAINTS_STRING, element);
-        SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT.getValue());
+        SimpleDateFormat format = new SimpleDateFormat(StringEnum.DATE_FORMAT.getValue());
         try {
             bank.setTimeConstraints(format.parse(strDate));
         } catch (ParseException e) {

@@ -1,12 +1,10 @@
-package by.epam.parser;
+package by.epam.fourthtask.parser;
 
-import by.epam.entity.Bank;
-import by.epam.entity.DepositType;
+import by.epam.fourthtask.entity.Bank;
+import by.epam.fourthtask.entity.DepositType;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import static by.epam.parser.ParserStringEnum.*;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
@@ -47,15 +45,13 @@ public class BankSTAXParser {
 
                 if (xmlEvent.isEndElement()) {
                     EndElement endElement = xmlEvent.asEndElement();
-                    if (endElement.getName().getLocalPart().equals(BANK_STRING.getValue())) {
+                    if (endElement.getName().getLocalPart().equals(StringEnum.BANK_STRING.getValue())) {
                         result.add(bank);
                     }
                 }
             }
         } catch (FileNotFoundException | XMLStreamException e) {
             LOGGER.log(Level.ERROR, e);
-            // кидаю runtime, т.к. xml уже скачан и проверен нан валидность,
-            // поэтому ошибки могут быть связаны только с работой парсера
             throw new RuntimeException();
         }
 
@@ -66,15 +62,15 @@ public class BankSTAXParser {
         String element = startElement.getName().getLocalPart();
         XMLEvent xmlEvent;
 
-        element = element.replaceAll(HYPHEN_SYMBOL.getValue(), UNDERSCORE_SYMBOL.getValue()).toUpperCase();
+        element = element.replaceAll(StringEnum.HYPHEN_SYMBOL.getValue(), StringEnum.UNDERSCORE_SYMBOL.getValue()).toUpperCase();
         switch (BankElement.valueOf(element)) {
             case BANK: {
                 bank = new Bank();
-                Attribute idAttr = startElement.getAttributeByName(new QName(COUNTRY_STRING.getValue()));
+                Attribute idAttr = startElement.getAttributeByName(new QName(StringEnum.COUNTRY_STRING.getValue()));
                 if (idAttr != null) {
                     bank.setCountry(idAttr.getValue());
                 } else {
-                    bank.setCountry(EMPTY_STRING.getValue());
+                    bank.setCountry(StringEnum.EMPTY_STRING.getValue());
                 }
                 break;
             }
@@ -117,7 +113,7 @@ public class BankSTAXParser {
             case TIME_CONSTRAINTS: {
                 xmlEvent = xmlEventReader.nextEvent();
                 String strDate = xmlEvent.asCharacters().getData();
-                SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT.getValue());
+                SimpleDateFormat format = new SimpleDateFormat(StringEnum.DATE_FORMAT.getValue());
                 try {
                     bank.setTimeConstraints(format.parse(strDate));
                 } catch (ParseException e) {

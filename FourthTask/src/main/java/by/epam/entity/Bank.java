@@ -1,4 +1,4 @@
-package by.epam.entity;
+package by.epam.fourthtask.entity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -131,16 +131,4 @@ public class Bank {
                 ", timeConstraints=" + new SimpleDateFormat("yyyy-MM-dd").format(timeConstraints) +
                 '}';
     }
-
-//    @Override
-//    public String toString() {
-//        return name + " " +
-//                country + " " +
-//                type.getValue() + " " +
-//                depositor + " " +
-//                accountId + " " +
-//                amount + "$ " +
-//                profitability + "% " +
-//                new SimpleDateFormat("yyyy-MM-dd").format(timeConstraints);
-//    }
 }
